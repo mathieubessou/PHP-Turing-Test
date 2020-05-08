@@ -1,7 +1,8 @@
 <?php
     $contactEmail = CONFIG['ContactForm']['ContactEmail'];
     $formMentions = CONFIG['ContactForm']['FormMentions'];
-    $notify = 'Le message à été envoyé.';
+    $sentNotify = 'Le message à été envoyé.';
+    $errorNotify = '<!> ERREUR <!> Le message n\'a pas pu être envoyé.';
 
     require_once  ToolsPath . '/PHP-Turing-Test/TuringTestUsingDatabase.php';
     
@@ -24,7 +25,7 @@
                         'Content-Type' => 'text/plain; charset=utf-8',
                         'Content-Transfer-Encoding' => '8bit',
                     ));
-                    header('location:?sent=true');
+                    header('location:?sent=' . $mailResult ? 'true' : 'false');
             }
         }
         else {
@@ -36,8 +37,13 @@
     // Si le formulaire n'a pas été envoyé
     if (empty($_POST['message'])) {
         // Affichage de la notification
-        if (!empty($_GET['sent']) && $_GET['sent'] == 'true') {
-            echo "<script>alert('$notify');</script>";
+        if (!empty($_GET['sent'])) {
+            if ($_GET['sent'] == 'true') {
+                echo "<script>alert(\"$sentNotify\");</script>";
+            }
+            else {
+                echo "<script>alert(\"$errorNotify\");</script>";
+            }
         }
         // Afficher le formulaire
         echo '
