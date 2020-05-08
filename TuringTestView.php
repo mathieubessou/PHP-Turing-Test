@@ -27,8 +27,7 @@
             $imageTag = '';
             $tokenInput = '';
             if (self::$useToken) {
-                // Récupération/Création du jeton
-                $token = !empty($_POST['token']) ? $_POST['token'] : TuringTestUsingDatabase::newToken();
+                $token = TuringTestUsingDatabase::newToken();
                 $imageTag = '<img src="'.self::$imageSRC.'?token='.$token.'" style="width: 130px;">';
                 $tokenInput = '<input type="hidden" name="token" value="'.$token.'" />';
             }
