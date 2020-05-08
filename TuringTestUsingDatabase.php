@@ -96,6 +96,7 @@
         }
 
         // Créer et retourne un nouveau jeton
+        // Un nouveau jeton doit être utilisé pour chaque affichage. Sans cela, l'image pourrait ne pas être actualisé car le lien serait le même. Le navigateur pourrait penser que c'est la même image.
         public static function newToken()
         {
             return bin2hex(random_bytes(16));
