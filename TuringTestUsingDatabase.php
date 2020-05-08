@@ -6,9 +6,9 @@
         A placer dans le fichier image.php
         ********************************
         <?php
-        require_once  __DIR__ . '/../../../Framework/DbConnect.php';
-        require_once  __DIR__ . '/TuringTestUsingDatabase.php';
-        require_once __DIR__ . "/../../../../config.php";
+        require_once  __DIR__ . '/../../../Lib/Framework/DbConnect.php';
+        require_once  __DIR__ . '/../../../Lib/Tools/PHP-Turing-Test/TuringTestUsingDatabase.php';
+        require_once __DIR__ . '/../../../config.php';
 
         // Connexion à la base de donnée
         $db = DbConnect::newConnection(
