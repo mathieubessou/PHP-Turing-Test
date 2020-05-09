@@ -87,7 +87,7 @@
             
             $result = $req->fetch()['result'];
 
-            if (!empty($result)) {
+            if (isset($result) && $result !== null) {
                 return self::$result = $result;
             }
             else {
